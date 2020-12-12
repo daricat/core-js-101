@@ -413,8 +413,8 @@ function findAllOccurences(arr, item) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 /**
@@ -444,7 +444,13 @@ function toStringList(/* arr */) {
  *    ]
  */
 function sortCitiesArray(arr) {
-  return arr.sort((a, b) => b.city - a.city);
+  const sorting = (a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
+
+  return arr.sort((a, b) => sorting(a.country, b.country) || sorting(a.city, b.city));
 }
 
 /**
